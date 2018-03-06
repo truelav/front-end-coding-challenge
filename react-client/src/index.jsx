@@ -11,7 +11,7 @@ class App extends React.Component {
     this.state = {
       posts: [],
       favorites: [],
-      activeTag: '',
+      activeTag: 'nothing',
     }
   this.getPosts = this.getPosts.bind(this)  
   this.handleFavorite = this.handleFavorite.bind(this)
@@ -57,6 +57,7 @@ class App extends React.Component {
         <a href="/favorites"><button>Favorites</button></a>
         <div className="active-tag"><h3>Active Tags:</h3><button className="tag-button">{this.state.activeTag}</button></div>
         <Posts posts ={this.state.posts} handleFavorite={this.handleFavorite} handleTags={this.handleTags}/>
+        {/* <Favorites posts={this.state.favorites}/> */}
         {/* <Switch>
           <Route exact path='/' component={Posts}/>
           <Route path='/favorites' component={Favorites}/>
