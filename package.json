@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "json-server": "json-server --watch db.json",
     "start-react": "lite-server --baseDir='./react-client/dist'",
     "start-ang": "lite-server --baseDir='./angular-client/'",
     "dev-react": "webpack -d --watch"
@@ -11,6 +12,7 @@
   "author": "Hack Reactor",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2"
   },
