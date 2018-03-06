@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Posts from './components/Posts'
 import { Switch, Route, BrowserRouter, Router } from 'react-router-dom'
-import Home from './components/Home'
 import Favorites from './components/Favorites'
 
 class App extends React.Component {
@@ -12,7 +11,6 @@ class App extends React.Component {
     this.state = {
       posts: [],
       favorites: [],
-      activeFilter = false,
       activeTag: '',
     }
   this.getPosts = this.getPosts.bind(this)  
@@ -25,10 +23,10 @@ class App extends React.Component {
   }
 
   getPosts() {
-   axios.get('http://localhost:3000/db')
+   axios.get('http://localhost:3000/posts')
     .then( (response) => {
       this.setState({
-        posts: response.data.posts
+        posts: response.data
       })
     })
     .catch(function (err) {
@@ -40,22 +38,16 @@ class App extends React.Component {
     this.state.favorites.push(post);
   }
 
+  unFavorite(post){
+
+  }
+
   handleTags(tag) {
-    let filteredPosts  = this.state.posts.filter( post => {
-      return  post.tags.forEach( myTag => {
-        if (myTag === tag) {
-          return true
-        }
-        return false
-      })
-    })
 
     this.setState({
       activeTag: tag,
-      posts: filteredPosts
     })
     
-   console.log(this.state)
   }
 
 
