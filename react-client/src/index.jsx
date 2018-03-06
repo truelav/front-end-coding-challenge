@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Posts from './components/Posts'
 
 class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
       posts: [],
+      favorites: [],
     }
   this.getPosts = this.getPosts.bind(this)  
+  this.handleFavorite = this.handleFavorite.bind(this)
   }
 
   componentDidMount () {
@@ -20,7 +23,7 @@ class App extends React.Component {
     .then( (response) => {
       console.log(response)
       this.setState({
-        tasks: response.data
+        posts: response.data.posts
       })
     })
     .catch(function (err) {
@@ -28,10 +31,15 @@ class App extends React.Component {
     });
   }
 
+  handleFavorite() {
+    console.log('favorite')
+  }
+
   render() {
     return (
       <div>
-        
+        <div><h3>Active Tags</h3></div>
+        <Posts posts ={this.state.posts} handleFavorite={this.handleFavorite} />
       </div>
     )
   }
